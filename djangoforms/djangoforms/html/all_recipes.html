@@ -1,0 +1,19 @@
+<body>
+    <h2>Wow look at all these recipes!!</h2>
+    {% if data.user.username %}
+        <p>Welcome, {{ data.user.username }}</p>
+        <p><a href="logout/">Logout</a></p>
+    {% else %}
+        <p><a href="signup/">Sign up</a></p>
+        <p><a href="login/">Log in</a></p>
+    {% endif %}
+    <ul>
+        {% for item in data.recipes %}
+        <li>
+            <a href="/recipe/{{ item.id }}">{{ item.title }}</a>
+            -- by <a href="/author/{{ item.author.id }}">{{ item.author }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <p><a href="addrecipe/">Add Recipe</a></p>
+</body>
